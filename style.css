@@ -106,14 +106,20 @@ body {
     background-color: tomato;
 }
 
+/* Default font sizes (Mobile First) */
 .team-name {
-    font-size: 2.5vw;
+    font-size: 24vw;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
+.server-info {
+    font-size: 15vw;
+    margin-top: 10px;
+}
+
 .score {
-    font-size: 25vw;
+    font-size: 50vw;
     font-weight: bold;
     cursor: pointer;
     flex-grow: 1;
@@ -124,13 +130,27 @@ body {
 }
 
 .set-score {
-    font-size: 5vw;
+    font-size: 30vw;
     font-weight: bold;
 }
 
-.server-info {
-    font-size: 2vw;
-    margin-top: 10px;
+/* Media Query for larger screens (Tablets and Desktops) */
+@media (min-width: 768px) {
+    .team-name {
+        font-size: 2.5vw;
+    }
+
+    .server-info {
+        font-size: 2vw;
+    }
+
+    .score {
+        font-size: 25vw;
+    }
+
+    .set-score {
+        font-size: 5vw;
+    }
 }
 
 /* Control Panel Styles */
