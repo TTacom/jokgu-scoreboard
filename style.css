@@ -108,18 +108,19 @@ body {
 
 /* Default font sizes (Mobile First) */
 .team-name {
-    font-size: 24vw;
+    font-size: 8vw;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 .server-info {
-    font-size: 15vw;
+    font-size: 10vw; /* Doubled size */
+    font-weight: bold; /* Made bold */
     margin-top: 10px;
 }
 
 .score {
-    font-size: 50vw;
+    font-size: 45vw;
     font-weight: bold;
     cursor: pointer;
     flex-grow: 1;
@@ -130,7 +131,7 @@ body {
 }
 
 .set-score {
-    font-size: 30vw;
+    font-size: 10vw;
     font-weight: bold;
 }
 
