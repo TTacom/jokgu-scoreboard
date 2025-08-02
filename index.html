@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>족구 스코어보드</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Setup Modal -->
+    <div id="setup-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>게임 설정</h2>
+            <div class="setup-section">
+                <p>우리팀 시작 위치:</p>
+                <label><input type="radio" name="start-side" value="left" checked> 왼쪽</label>
+                <label><input type="radio" name="start-side" value="right"> 오른쪽</label>
+            </div>
+            <div class="setup-section">
+                <p>첫 서브:</p>
+                <label><input type="radio" name="first-serve" value="home" checked> 우리팀</label>
+                <label><input type="radio" name="first-serve" value="away"> 상대팀</label>
+            </div>
+            <button id="start-game-btn">게임 시작</button>
+        </div>
+    </div>
+
+    <!-- Main Scoreboard -->
+    <div id="scoreboard-container" class="hidden">
+        <main id="main-board" class="main-board">
+            <!-- Home Team -->
+            <section id="home-team" class="team-section home">
+                <div class="team-name">우리팀</div>
+                <div class="server-info" id="home-server">Server: Player 1</div>
+                <div class="score" id="home-score">0</div>
+                <div class="set-score" id="home-set-score">0</div>
+            </section>
+
+            <!-- Away Team -->
+            <section id="away-team" class="team-section away">
+                <div class="team-name">상대팀</div>
+                <div class="server-info" id="away-server">Server: Player 1</div>
+                <div class="score" id="away-score">0</div>
+                <div class="set-score" id="away-set-score">0</div>
+            </section>
+        </main>
+
+        <!-- Control Panel -->
+        <footer class="control-panel">
+            <button id="undo-btn">되돌리기</button>
+            <button id="court-change-btn">코트 교대</button>
+            <button id="reset-btn">초기화</button>
+            <div class="settings">
+                <label>
+                    <input type="checkbox" id="auto-court-change" checked>
+                    세트 후 자동 코트 교대
+                </label>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

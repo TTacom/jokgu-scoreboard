@@ -1,0 +1,172 @@
+/* General Body Styles */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow: hidden;
+    background-color: #121212;
+    color: white;
+    text-align: center;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #333;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+.setup-section {
+    margin-bottom: 20px;
+}
+
+.setup-section p {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.modal-content label {
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+#start-game-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#start-game-btn:hover {
+    background-color: #45a049;
+}
+
+/* Main Scoreboard Styles */
+.hidden {
+    display: none;
+}
+
+#scoreboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.main-board {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.main-board.swapped {
+    flex-direction: row-reverse;
+}
+
+.team-section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: background-color 0.5s;
+}
+
+.home {
+    background-color: cornflowerblue;
+}
+
+.away {
+    background-color: tomato;
+}
+
+.team-name {
+    font-size: 2.5vw;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.score {
+    font-size: 25vw;
+    font-weight: bold;
+    cursor: pointer;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.set-score {
+    font-size: 5vw;
+    font-weight: bold;
+}
+
+.server-info {
+    font-size: 2vw;
+    margin-top: 10px;
+}
+
+/* Control Panel Styles */
+.control-panel {
+    background-color: #222;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.control-panel button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.control-panel button:hover {
+    background-color: #444;
+}
+
+.settings {
+    display: flex;
+    align-items: center;
+}
+
+.settings label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
