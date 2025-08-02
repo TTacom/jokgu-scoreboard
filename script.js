@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         awaySetScore: 0,
         homeServer: 1,
         awayServer: 1,
-        hasServe: 'home',
+        hasServe: null, // Start with no server
         isCourtSwapped: false,
         isAutoCourtChangeEnabled: true,
         gameOver: false,
@@ -77,16 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initializeGame() {
         const startSide = document.querySelector('input[name="start-side"]:checked').value;
-        const firstServe = document.querySelector('input[name="first-serve"]:checked').value;
-
-        state.hasServe = firstServe;
         state.isCourtSwapped = (startSide === 'right');
         
-        resetScoresAndServers();
         state.homeSetScore = 0;
         state.awaySetScore = 0;
         state.gameOver = false;
         history = [];
+        resetScoresAndServers(); // This will set hasServe to null
 
         modal.classList.add('hidden');
         scoreboardContainer.classList.remove('hidden');
@@ -103,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         homeServerEl.textContent = `서브: ${state.homeServer}`;
         awayServerEl.textContent = `서브: ${state.awayServer}`;
 
+        // Show server info only if a serve has been established
         homeServerEl.style.visibility = state.hasServe === 'home' ? 'visible' : 'hidden';
         awayServerEl.style.visibility = state.hasServe === 'away' ? 'visible' : 'hidden';
 
@@ -116,7 +114,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function incrementScore(team) {
         if (state.gameOver) return;
 
-        giveFeedback(); // Call feedback function
+        giveFeedback();
+
+        // If no one has the serve yet (first point of the set)
+        if (state.hasServe === null) {
+            state.hasServe = team;
+            state.homeScore = 0; // Ensure scores are 0
+            state.awayScore = 0;
+            updateDisplay();
+            return; // Don't increment score on the first click
+        }
+
         saveState();
 
         const servingTeam = state.hasServe;
@@ -129,14 +137,12 @@ document.addEventListener('DOMContentLoaded', () => {
             state.awayScore++;
         }
         
-        // Assign serve to the scoring team
         state.hasServe = team;
 
-        // If serve was lost, rotate the server for the team that lost the point
         if (isSideOut) {
             if (servingTeam === 'home') {
                 state.homeServer = (state.homeServer % 4) + 1;
-            } else { // away team lost the serve
+            } else {
                 state.awayServer = (state.awayServer % 4) + 1;
             }
         }
@@ -165,10 +171,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (awayWon) state.awaySetScore++;
             
             if (checkMatchWin()) {
-                return; // Game over handled in checkMatchWin
+                return;
             }
 
-            // Prepare for next set
             resetScoresAndServers();
             if (state.isAutoCourtChangeEnabled) {
                 courtChange();
@@ -188,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
             state.gameOver = true;
             setTimeout(() => {
                 alert(`${winner} 승리!`);
-            }, 100); // Timeout to allow display to update first
+            }, 100);
             return true;
         }
         return false;
@@ -215,13 +220,13 @@ document.addEventListener('DOMContentLoaded', () => {
         state.awayScore = 0;
         state.homeServer = 1;
         state.awayServer = 1;
+        state.hasServe = null; // Reset serve for the new set
     }
 
     function resetGame() {
         if (confirm('게임을 초기화하시겠습니까?')) {
             scoreboardContainer.classList.add('hidden');
             modal.classList.remove('hidden');
-            // State will be reset on new game start
         }
     }
 

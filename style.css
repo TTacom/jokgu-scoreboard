@@ -74,7 +74,7 @@ body {
 #scoreboard-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100dvh; /* Use dynamic viewport height */
 }
 
 .main-board {
@@ -170,3 +170,5 @@ body {
     align-items: center;
     gap: 5px;
 }
+
+
